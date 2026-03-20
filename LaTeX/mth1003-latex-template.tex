@@ -72,24 +72,48 @@
 
 \begin{document}
 
-\centerline{\LARGE{My Title}}
+\centerline{\LARGE{Goal Modelling}}
  
-This is a template which you may find helpful in writing your report, though you do not need to use this, and can modify it as you wish.
+In this report we will be looking at goal data from five seasons of one
+division (The Championship) of the English Football League. 
+We will find a suitable statistical model and use it to make predictions for the 2024 season.
+Then we will investigate how much difference home advantage makes.
+\section{Finding a suitable model}
 
-\section{Section heading}
-\label{sec:heading}
+First we need to choose a suitable statistical model for the number of goals scored.
+We know that the it should be discrete and non-negative, and
+that there is no upper limit. It is fair to assume
+that the event of a scoring a goal is independent of another goal being scored.
+This makes the the Poisson distribution a possible suitable model for the number of goals scored.
 
-You can refer to text in other sections by using section labels,
-e.g. you can see some example equations in section \ref{sec:heading}.
-
-Here is an example of a simple equation. Equations are also labelled
-so you can refer to them in the text, e.g. see equation
-\eqref{eq:lv0}.
+Let $X$, $Y$ be the random variable representing the number of home and away goals respectively.
+Then $X \sim \text{Poisson}(\lambda_h)$ and $Y \sim \text{Poisson}(\lambda_a)$ follow a poisson distribution with rate parameters $\lambda_h$ and $\lambda_a$ respectively.
+The first moment of a poisson distribution is $\lambda$.
 
 \begin{equation}
-\label{eq:lv0}
-\dot{r} = r(1 - g), \qquad \dot{g} = g(2 - r).
+E[X] = \lambda_h \quad \text{and} \quad E[Y] = \lambda_a
 \end{equation}
+
+This gives us $\hat{\lambda}_h \approx 1.41$ and $\hat{\lambda}_a \approx 1.13$. We can then plot a histogram of the home goals
+and away goals and overlay their respective poisson distributions to see if they fit.
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../Plots/Question1/HomeGoals.pdf}
+    \caption{Proportion histogram of home goals with Poisson distribution overlay}
+    \label{fig:home_goals}
+  \end{minipage}\hfill
+  \begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../Plots/Question1/AwayGoals.pdf}
+    \caption{Proportion histogram of away goals with Poisson distribution overlay}
+    \label{fig:away_goals}
+  \end{minipage}
+\end{figure}
+
+As we can see from the plots, the Poisson distributions fit the data well.
+From this we can conclude that the Poisson distribution is a suitable model for the number of goals scored.
 
 \section{A few examples} 
 \label{sec:examples}

@@ -2,3 +2,16 @@
 .Rhistory
 .RData
 .Ruserdata
+
+# LaTeX
+*.aux
+*.log
+*.toc
+*.out
+*.pdf
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.idx
